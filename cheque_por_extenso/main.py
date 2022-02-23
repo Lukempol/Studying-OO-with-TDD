@@ -46,8 +46,8 @@ class Cheque_por_extenso:
         return self.escreve_cheques(self.valor)
 
     def escreve_cheques(self, valor):
-        reais = valor // 1
-        centavos = round((valor % 1) * 100)
+        reais, centavos = divmod(valor, 1)
+        centavos = round(centavos * 100)
         if reais and centavos:
             return (self.escreve_reais(reais)+' e '+self.escreve_centavos(centavos)+'.').capitalize()
         if reais and not centavos:
@@ -72,16 +72,15 @@ class Cheque_por_extenso:
             return self.escreve_dezena(valor)+' centavos'
     
     def escreve_milhares(self, valor):
-        milhar = valor // 1000
-        centena = valor % 1000
+        milhar, centena = divmod(valor, 1000)
         if centena == 0:
             return self.escreve_centena(milhar)+' mil'
         else:
             return self.escreve_centena(milhar)+' mil '+self.escreve_centena(centena)
 
     def escreve_centena(self, valor):
-        centena = (valor//100)*100
-        dezena = valor%100
+        centena, dezena = divmod(valor, 100)
+        centena = centena*100
         if centena == 0:
             return self.escreve_dezena(dezena)
         if dezena == 0:

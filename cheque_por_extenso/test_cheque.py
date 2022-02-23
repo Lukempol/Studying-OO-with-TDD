@@ -84,3 +84,4 @@ class TestChequeExtenso(unittest.TestCase):
         self.assertEqual(cheque(607369.01), 'Seiscentos e sete mil trezentos e sessenta e nove reais e um centavo.')
         self.assertEqual(cheque(113000.45), 'Cento e treze mil reais e quarenta e cinco centavos.')
         self.assertEqual(cheque(203480.30), 'Duzentos e três mil quatrocentos e oitenta reais e trinta centavos.')
+
